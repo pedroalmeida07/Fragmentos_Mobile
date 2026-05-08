@@ -5,15 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.fragmento.databinding.FragmentABinding
+import com.example.fragmento.databinding.FragmentBBinding
 
 class FragmentB : Fragment() {
+    private var _binding: FragmentBBinding? = null  // Fragment B
+    private val binding get() = _binding!!  // Propriedade
+
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_b, container, false)
+    ): View {
+        _binding = FragmentBBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
